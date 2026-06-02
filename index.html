@@ -1,9 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Nawy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nawy.ai</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#080808,#1b1035);
+color:white;
+display:flex;
+height:100vh;
+}
+
+.sidebar{
+width:250px;
+background:rgba(0,0,0,.4);
+backdrop-filter:blur(10px);
+padding:20px;
+border-right:1px solid rgba(255,255,255,.1);
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+margin-bottom:30px;
+color:#a855f7;
+}
+
+.menu a{
+display:block;
+padding:12px;
+margin-bottom:10px;
+text-decoration:none;
+color:white;
+border-radius:10px;
+transition:.3s;
+}
+
+.menu a:hover{
+background:#7c3aed;
+}
+
+.main{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+}
+
+.title{
+font-size:40px;
+margin-bottom:20px;
+}
+
+input{
+width:70%;
+max-width:700px;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#1a1a1a;
+color:white;
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+padding:14px 30px;
+border:none;
+border-radius:12px;
+background:#7c3aed;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#9333ea;
+}
+</style>
 </head>
+
 <body>
-<h1>NAWY</h1>
+
+<div class="sidebar">
+<div class="logo">NAWY.AI</div>
+
+<div class="menu">
+<a href="#">🏠 Ana Sayfa</a>
+<a href="#">📝 Özet</a>
+<a href="#">🎥 YouTube</a>
+<a href="#">📄 PDF</a>
+<a href="#">🕒 Geçmiş</a>
+<a href="#">⚙️ Ayarlar</a>
+</div>
+</div>
+
+<div class="main">
+<h1 class="title">YouTube Videosunu Özetle</h1>
+
+<input type="text" placeholder="YouTube linkini yapıştır...">
+
+<button>Özet Çıkar</button>
+</div>
+
 </body>
 </html>
