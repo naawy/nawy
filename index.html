@@ -25,7 +25,6 @@ overflow:hidden;
 }
 
 /* SIDEBAR */
-
 .sidebar{
 width:260px;
 background:#090909;
@@ -41,8 +40,7 @@ overflow:hidden;
 width:85px;
 }
 
-/* LOGO AREA */
-
+/* LOGO */
 .logo{
 display:flex;
 align-items:center;
@@ -51,14 +49,25 @@ margin-bottom:40px;
 font-size:20px;
 font-weight:bold;
 color:#e5e5e5;
+transition:0.3s ease;
 }
 
-/* TOGGLE BTN */
+/* TEXT ANIMATION OUT */
+.logo span{
+transition:0.25s ease;
+white-space:nowrap;
+}
 
+.sidebar.collapsed .logo span{
+opacity:0;
+transform:translateX(-20px) scale(0.7);
+}
+
+/* HAMBURGER */
 .toggle-btn{
 cursor:pointer;
-font-size:16px;
-padding:6px 10px;
+font-size:18px;
+padding:8px 10px;
 border-radius:8px;
 border:1px solid #2a2a2a;
 transition:.3s;
@@ -69,7 +78,6 @@ background:#111;
 }
 
 /* MENU */
-
 .menu a{
 display:flex;
 align-items:center;
@@ -83,7 +91,7 @@ cursor:pointer;
 transition:.3s;
 }
 
-/* ICONS */
+/* ICON BOX */
 .menu a i{
 width:38px;
 height:38px;
@@ -103,20 +111,27 @@ transition:0.2s;
 white-space:nowrap;
 }
 
-/* COLLAPSE TEXT HIDE */
+/* TEXT HIDE */
 .sidebar.collapsed .menu a span{
 opacity:0;
+transform:scale(0.5);
 width:0;
 display:none;
 }
 
-/* CENTER ICONS WHEN COLLAPSED */
+/* ICON CENTER */
 .sidebar.collapsed .menu a{
 justify-content:center;
 }
 
-/* SOCIALS */
+/* COLLAPSED SMALL SQUARE LOOK */
+.sidebar.collapsed .menu a i{
+width:42px;
+height:42px;
+border-radius:10px;
+}
 
+/* SOCIALS */
 .socials{
 position:absolute;
 bottom:20px;
@@ -126,12 +141,12 @@ gap:12px;
 transition:.3s;
 }
 
-/* HIDE SOCIALS ON COLLAPSE */
+/* HIDE SOCIALS WHEN COLLAPSED */
 .sidebar.collapsed .socials{
 display:none;
 }
 
-/* SOCIAL BASE */
+/* SOCIAL */
 .social{
 width:42px;
 height:42px;
@@ -148,7 +163,6 @@ transform:translateY(-5px) scale(1.1);
 }
 
 /* MAIN */
-
 .main{
 flex:1;
 display:flex;
@@ -158,7 +172,6 @@ position:relative;
 }
 
 /* PAGE ANIMATION */
-
 .page{
 position:absolute;
 opacity:0;
@@ -179,7 +192,6 @@ pointer-events:auto;
 }
 
 /* TOP */
-
 .top-buttons{
 position:absolute;
 top:20px;
@@ -199,7 +211,6 @@ opacity:0.8;
 }
 
 /* TITLE */
-
 .title{
 font-size:40px;
 margin-bottom:20px;
@@ -223,7 +234,7 @@ color:#f5f5f5;
 <span>nawy ai</span>
 
 <div class="toggle-btn" onclick="toggleSidebar()">
-<i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
+<i class="fa-solid fa-bars"></i>
 </div>
 
 </div>
@@ -289,18 +300,7 @@ document.getElementById(pageId).classList.add('active');
 
 /* SIDEBAR TOGGLE */
 function toggleSidebar(){
-const sidebar = document.getElementById("sidebar");
-const icon = document.getElementById("toggleIcon");
-
-sidebar.classList.toggle("collapsed");
-
-if(sidebar.classList.contains("collapsed")){
-icon.classList.remove("fa-chevron-left");
-icon.classList.add("fa-chevron-right");
-}else{
-icon.classList.remove("fa-chevron-right");
-icon.classList.add("fa-chevron-left");
-}
+document.getElementById("sidebar").classList.toggle("collapsed");
 }
 
 </script>
