@@ -6,6 +6,7 @@
 <title>Nawy.ai</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,105 +15,199 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#080808,#1b1035);
+background:#000;
 color:white;
 display:flex;
 height:100vh;
+overflow:hidden;
 }
 
+/* SOL MENU */
+
 .sidebar{
-width:250px;
-background:rgba(0,0,0,.4);
-backdrop-filter:blur(10px);
+width:230px;
+background:#0a0a0a;
+border-right:1px solid #1f1f1f;
 padding:20px;
-border-right:1px solid rgba(255,255,255,.1);
 }
 
 .logo{
 font-size:24px;
 font-weight:bold;
-margin-bottom:30px;
-color:#a855f7;
+margin-bottom:35px;
+color:white;
 }
 
 .menu a{
 display:block;
-padding:12px;
+padding:14px;
 margin-bottom:10px;
+border-radius:12px;
 text-decoration:none;
 color:white;
-border-radius:10px;
-transition:.3s;
+transition:0.3s;
+cursor:pointer;
 }
 
 .menu a:hover{
-background:#7c3aed;
+background:#171717;
+transform:translateX(5px);
 }
+
+/* ANA ALAN */
 
 .main{
 flex:1;
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-padding:20px;
+position:relative;
 }
 
-.title{
-font-size:40px;
-margin-bottom:20px;
+/* SAYFALAR */
+
+.page{
+position:absolute;
+opacity:0;
+transform:translateY(40px) scale(.95);
+pointer-events:none;
+transition:.45s;
+text-align:center;
 }
 
-input{
-width:70%;
-max-width:700px;
-padding:15px;
+.page.active{
+opacity:1;
+transform:translateY(0) scale(1);
+pointer-events:auto;
+}
+
+/* YOUTUBE */
+
+.youtube-title{
+font-size:42px;
+margin-bottom:25px;
+font-weight:bold;
+}
+
+.input-box{
+width:650px;
+max-width:90vw;
+padding:18px;
 border:none;
-border-radius:12px;
-background:#1a1a1a;
+outline:none;
+border-radius:14px;
+background:#111;
 color:white;
-font-size:16px;
+font-size:17px;
+border:1px solid #222;
+transition:.3s;
+}
+
+.input-box:focus{
+border:1px solid #6d28d9;
+box-shadow:0 0 20px rgba(109,40,217,.5);
 }
 
 button{
-margin-top:15px;
-padding:14px 30px;
+margin-top:20px;
+padding:15px 30px;
 border:none;
-border-radius:12px;
-background:#7c3aed;
+border-radius:14px;
+background:#6d28d9;
 color:white;
 font-size:16px;
 cursor:pointer;
+transition:.3s;
 }
 
 button:hover{
-background:#9333ea;
+background:#7c3aed;
+transform:scale(1.05);
 }
+
+.home-text{
+font-size:40px;
+font-weight:bold;
+opacity:.8;
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- SOL MENU -->
+
 <div class="sidebar">
+
 <div class="logo">NAWY.AI</div>
 
 <div class="menu">
-<a href="#">🏠 Ana Sayfa</a>
-<a href="#">📝 Özet</a>
-<a href="#">🎥 YouTube</a>
-<a href="#">📄 PDF</a>
-<a href="#">🕒 Geçmiş</a>
-<a href="#">⚙️ Ayarlar</a>
+<a onclick="showPage('home')">🏠 Ana Sayfa</a>
+<a onclick="showPage('youtube')">🎥 YouTube</a>
+<a onclick="showPage('history')">🕒 Geçmiş</a>
+<a onclick="showPage('settings')">⚙️ Ayarlar</a>
 </div>
+
 </div>
+
+<!-- ANA -->
 
 <div class="main">
-<h1 class="title">YouTube Videosunu Özetle</h1>
 
-<input type="text" placeholder="YouTube linkini yapıştır...">
+<!-- HOME -->
 
-<button>Özet Çıkar</button>
+<div id="home" class="page active">
+<div class="home-text">
+Nawy.ai
 </div>
+</div>
+
+<!-- YOUTUBE -->
+
+<div id="youtube" class="page">
+
+<div class="youtube-title">
+YouTube URL
+</div>
+
+<input class="input-box" type="text" placeholder="YouTube linkini yapıştır...">
+
+<br>
+
+<button>
+Özet Çıkar
+</button>
+
+</div>
+
+<!-- HISTORY -->
+
+<div id="history" class="page">
+<h1>Geçmiş</h1>
+</div>
+
+<!-- SETTINGS -->
+
+<div id="settings" class="page">
+<h1>Ayarlar</h1>
+</div>
+
+</div>
+
+<script>
+
+function showPage(pageId){
+
+document.querySelectorAll('.page').forEach(page=>{
+page.classList.remove('active');
+});
+
+document.getElementById(pageId).classList.add('active');
+
+}
+
+</script>
 
 </body>
 </html>
