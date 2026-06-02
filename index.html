@@ -24,31 +24,6 @@ display:flex;
 overflow:hidden;
 }
 
-/* TOP BUTTONS */
-.top-buttons{
-position:absolute;
-top:20px;
-right:25px;
-display:flex;
-gap:15px;
-z-index:10;
-}
-
-.top-buttons a{
-padding:12px 20px;
-border-radius:12px;
-color:white;
-text-decoration:none;
-border:1px solid #5b21b6;
-opacity:0.8;
-transition:0.3s;
-}
-
-.top-buttons a:hover{
-opacity:1;
-background:#111;
-}
-
 /* SIDEBAR */
 .sidebar{
 width:260px;
@@ -110,8 +85,10 @@ justify-content:center;
 border-radius:12px;
 background:#111;
 border:1px solid #2a2a2a;
+transition:0.3s;
 }
 
+/* TEXT */
 .menu a span{
 white-space:nowrap;
 }
@@ -130,7 +107,13 @@ border:none;
 font-size:20px;
 }
 
-/* SOCIALS */
+/* NEON HOVER */
+.menu a:hover i{
+color:#a855f7;
+}
+
+/* ================= SOCIAL COLORS ================= */
+
 .socials{
 position:absolute;
 bottom:20px;
@@ -143,6 +126,20 @@ gap:10px;
 display:none;
 }
 
+/* DISCORD */
+.social.discord i{ color:#5865F2; }
+
+/* INSTAGRAM */
+.social.instagram i{
+background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* TIKTOK */
+.social.tiktok i{ color:#fff; }
+
+/* SOCIAL BASE */
 .social{
 width:40px;
 height:40px;
@@ -151,19 +148,8 @@ align-items:center;
 justify-content:center;
 border-radius:10px;
 border:1px solid #222;
-transition:0.3s;
+transition:.3s;
 }
-
-/* SOCIAL COLORS */
-.social.discord i{ color:#5865F2; }
-
-.social.instagram i{
-background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.social.tiktok i{ color:white; }
 
 .social:hover{
 transform:translateY(-3px) scale(1.05);
@@ -198,7 +184,7 @@ filter:blur(0);
 pointer-events:auto;
 }
 
-/* INPUT */
+/* INPUTS */
 .input-box{
 width:500px;
 padding:15px;
@@ -207,6 +193,7 @@ border:1px solid #7c3aed;
 background:#000;
 color:white;
 margin-top:10px;
+outline:none;
 }
 
 .btn{
@@ -219,6 +206,7 @@ color:white;
 cursor:pointer;
 }
 
+/* UPLOAD */
 .file-label{
 display:inline-block;
 margin-top:10px;
@@ -230,6 +218,7 @@ cursor:pointer;
 
 .file-name{
 margin-top:10px;
+font-size:14px;
 color:#aaa;
 }
 
@@ -238,13 +227,6 @@ color:#aaa;
 
 <body>
 
-<!-- TOP LOGIN -->
-<div class="top-buttons">
-<a href="#">Oturum Aç</a>
-<a href="#">Kayıt Ol</a>
-</div>
-
-<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
 <div class="header">
@@ -282,19 +264,22 @@ color:#aaa;
 
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
+<!-- HOME -->
 <div id="home" class="page active">
 <h1>Welcome</h1>
 </div>
 
+<!-- YOUTUBE -->
 <div id="youtube" class="page">
 <h1>YouTube URL</h1>
+
 <input class="input-box" placeholder="YouTube linkini yapıştır...">
 <button class="btn">Özet Çıkar</button>
 </div>
 
+<!-- PODCAST -->
 <div id="podcast" class="page">
 <h1>Podcast Upload</h1>
 
@@ -306,6 +291,7 @@ Dosya Seç
 <div class="file-name" id="fileName">Dosya seçilmedi</div>
 </div>
 
+<!-- SETTINGS -->
 <div id="settings" class="page">
 <h1>Ayarlar</h1>
 </div>
@@ -324,8 +310,9 @@ document.getElementById(id).classList.add("active");
 }
 
 function showFile(input){
+const fileName = input.files[0]?.name;
 document.getElementById("fileName").innerText =
-input.files[0]?.name || "Dosya seçilmedi";
+fileName ? fileName : "Dosya seçilmedi";
 }
 
 </script>
