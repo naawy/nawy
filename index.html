@@ -24,7 +24,15 @@ display:flex;
 overflow:hidden;
 }
 
-/* TOP */
+/* BLUR WHEN MODAL OPEN */
+body.modal-open .sidebar,
+body.modal-open .main,
+body.modal-open .top-buttons{
+filter:blur(6px);
+pointer-events:none;
+}
+
+/* TOP BUTTONS */
 .top-buttons{
 position:absolute;
 top:20px;
@@ -254,47 +262,49 @@ font-size:40px;
 margin-bottom:20px;
 }
 
-/* INPUT */
-.input-box{
-width:500px;
-padding:15px;
-border-radius:12px;
+/* MODAL */
+.modal{
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,0.6);
+z-index:999;
+}
+
+.modal.active{
+display:flex;
+}
+
+.modal-box{
+width:350px;
+padding:25px;
+border-radius:16px;
+background:#0b0b0b;
 border:1px solid #7c3aed;
+box-shadow:0 0 20px rgba(124,58,237,0.4);
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.modal-box input{
+padding:12px;
+border-radius:10px;
+border:1px solid #333;
 background:#000;
 color:white;
-margin-top:10px;
 outline:none;
 }
 
-/* BUTTON */
-.btn{
-margin-top:15px;
-padding:12px 25px;
-background:#7c3aed;
+.modal-box button{
+padding:12px;
 border:none;
-border-radius:12px;
+border-radius:10px;
+background:#7c3aed;
 color:white;
 cursor:pointer;
-}
-
-/* FILE (UPDATED SAME SIZE AS INPUT) */
-.file-label{
-display:inline-block;
-margin-top:10px;
-width:500px;
-padding:15px;
-border-radius:12px;
-border:1px solid #7c3aed;
-cursor:pointer;
-text-align:center;
-background:#000;
-color:white;
-}
-
-/* FILE NAME */
-.file-name{
-margin-top:10px;
-color:#aaa;
 }
 
 /* TOP BUTTONS */
@@ -311,11 +321,13 @@ gap:15px;
 
 <body>
 
+<!-- TOP -->
 <div class="top-buttons">
-<a href="#">Oturum Aç</a>
+<a href="#" onclick="openLogin()">Oturum Aç</a>
 <a href="#">Kayıt Ol</a>
 </div>
 
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
 <div class="header">
@@ -361,6 +373,7 @@ gap:15px;
 
 </div>
 
+<!-- MAIN -->
 <div class="main">
 
 <div id="home" class="page active">
@@ -390,6 +403,18 @@ Dosya Seç
 
 </div>
 
+<!-- MODAL -->
+<div class="modal" id="loginModal" onclick="closeLogin(event)">
+  <div class="modal-box">
+    <h2 style="text-align:center;">Oturum Aç</h2>
+
+    <input type="text" placeholder="Kullanıcı adı">
+    <input type="password" placeholder="Şifre">
+
+    <button>Giriş Yap</button>
+  </div>
+</div>
+
 <script>
 
 function toggleSidebar(){
@@ -404,6 +429,18 @@ document.getElementById(id).classList.add("active");
 function showFile(input){
 document.getElementById("fileName").innerText =
 input.files[0]?.name || "Dosya seçilmedi";
+}
+
+function openLogin(){
+document.getElementById("loginModal").classList.add("active");
+document.body.classList.add("modal-open");
+}
+
+function closeLogin(e){
+if(e.target.id === "loginModal"){
+document.getElementById("loginModal").classList.remove("active");
+document.body.classList.remove("modal-open");
+}
 }
 
 </script>
