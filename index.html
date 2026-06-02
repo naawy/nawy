@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nawy.ai</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
 
 *{
@@ -22,6 +24,8 @@ display:flex;
 overflow:hidden;
 }
 
+/* SOL MENU */
+
 .sidebar{
 width:250px;
 background:#090909;
@@ -35,6 +39,8 @@ font-size:24px;
 font-weight:bold;
 margin-bottom:40px;
 }
+
+/* MENU */
 
 .menu a{
 display:block;
@@ -51,71 +57,56 @@ transition:.3s;
 background:#7c3aed;
 }
 
-.main{
-flex:1;
+/* SOSYAL MEDYA */
+
+.socials{
+position:absolute;
+bottom:20px;
+left:20px;
 display:flex;
-justify-content:center;
+gap:10px;
+}
+
+.social{
+width:42px;
+height:42px;
+display:flex;
 align-items:center;
+justify-content:center;
+text-decoration:none;
+color:white;
+font-size:18px;
 position:relative;
 }
 
-.page{
-display:none;
-flex-direction:column;
-align-items:center;
-animation:fade .35s ease;
+.social::before{
+content:"";
+position:absolute;
+inset:0;
+padding:2px;
+border-radius:8px;
+
+background:linear-gradient(
+90deg,
+#7c3aed,
+#a855f7,
+#7c3aed
+);
+
+background-size:300% 300%;
+animation:borderMove 3s linear infinite;
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+filter:drop-shadow(0 0 5px #a855f7);
 }
 
-.page.active{
-display:flex;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.title{
-font-size:42px;
-margin-bottom:20px;
-text-shadow:
-0 0 2px #fff,
-0 0 4px #fff;
-}
-
-.input-box{
-width:650px;
-max-width:90vw;
-padding:18px;
-border-radius:14px;
-border:1px solid #7c3aed;
-background:#000;
-color:white;
-outline:none;
-font-size:16px;
-}
-
-.btn{
-margin-top:15px;
-padding:14px 30px;
-border:none;
-border-radius:12px;
-background:#7c3aed;
-color:white;
-cursor:pointer;
-font-size:16px;
-transition:.25s;
-}
-
-.btn:hover{
-background:#9333ea;
-}
+/* SAG UST */
 
 .top-buttons{
 position:absolute;
@@ -123,6 +114,7 @@ top:20px;
 right:25px;
 display:flex;
 gap:15px;
+z-index:999;
 }
 
 .neon-btn{
@@ -158,51 +150,36 @@ linear-gradient(#fff 0 0);
 mask-composite:exclude;
 }
 
-.socials{
-position:absolute;
-bottom:20px;
-left:20px;
-display:flex;
-gap:12px;
-}
+/* ANA ALAN */
 
-.social{
-width:55px;
-height:55px;
+.main{
+flex:1;
 display:flex;
-align-items:center;
 justify-content:center;
-text-decoration:none;
-color:white;
-font-size:24px;
+align-items:center;
 position:relative;
 }
 
-.social::before{
-content:"";
-position:absolute;
-inset:0;
-padding:2px;
-border-radius:10px;
+.page{
+display:none;
+flex-direction:column;
+align-items:center;
+animation:fade .35s ease;
+}
 
-background:linear-gradient(
-90deg,
-#7c3aed,
-#a855f7,
-#7c3aed
-);
+.page.active{
+display:flex;
+}
 
-background-size:300% 300%;
-animation:borderMove 3s linear infinite;
-
--webkit-mask:
-linear-gradient(#fff 0 0) content-box,
-linear-gradient(#fff 0 0);
-
--webkit-mask-composite:xor;
-mask-composite:exclude;
-
-filter:drop-shadow(0 0 8px #a855f7);
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 @keyframes borderMove{
@@ -212,6 +189,53 @@ background-position:0% 50%;
 100%{
 background-position:300% 50%;
 }
+}
+
+/* BASLIK */
+
+.title{
+font-size:42px;
+margin-bottom:20px;
+text-shadow:
+0 0 2px #fff,
+0 0 4px #fff;
+}
+
+/* INPUT */
+
+.input-box{
+width:650px;
+max-width:90vw;
+padding:18px;
+border-radius:14px;
+border:1px solid #7c3aed;
+background:#000;
+color:white;
+outline:none;
+font-size:16px;
+}
+
+.input-box:focus{
+box-shadow:0 0 10px #7c3aed;
+}
+
+/* BUTON */
+
+.btn{
+margin-top:15px;
+padding:14px 30px;
+border:none;
+border-radius:12px;
+background:#7c3aed;
+color:white;
+cursor:pointer;
+font-size:16px;
+transition:.25s;
+}
+
+.btn:hover{
+background:#9333ea;
+transform:scale(1.05);
 }
 
 </style>
@@ -226,7 +250,9 @@ background-position:300% 50%;
 
 <div class="sidebar">
 
-<div class="logo">NAWY.AI</div>
+<div class="logo">
+NAWY.AI
+</div>
 
 <div class="menu">
 <a onclick="showPage('home')">🏠 Ana Sayfa</a>
@@ -236,9 +262,9 @@ background-position:300% 50%;
 </div>
 
 <div class="socials">
-<a href="#" class="social">🎮</a>
-<a href="#" class="social">📸</a>
-<a href="#" class="social">🎵</a>
+<a href="#" class="social"><i class="fa-brands fa-discord"></i></a>
+<a href="#" class="social"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
 </div>
 
 </div>
@@ -257,7 +283,9 @@ class="input-box"
 type="text"
 placeholder="YouTube linkini yapıştır...">
 
-<button class="btn">Özet Çıkar</button>
+<button class="btn">
+Özet Çıkar
+</button>
 </div>
 
 <div id="podcast" class="page">
@@ -267,7 +295,9 @@ placeholder="YouTube linkini yapıştır...">
 class="input-box"
 type="file">
 
-<button class="btn">Dosya Yükle</button>
+<button class="btn">
+Dosya Yükle
+</button>
 </div>
 
 <div id="settings" class="page">
