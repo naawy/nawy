@@ -6,6 +6,7 @@
 <title>Nawy.ai</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -23,8 +24,8 @@ overflow:hidden;
 
 .sidebar{
 width:240px;
-background:#0d0d0d;
-border-right:1px solid #222;
+background:#000;
+border-right:1px solid #111;
 padding:20px;
 }
 
@@ -32,6 +33,7 @@ padding:20px;
 font-size:24px;
 font-weight:bold;
 margin-bottom:40px;
+color:white;
 }
 
 .menu a{
@@ -83,20 +85,25 @@ font-size:42px;
 margin-bottom:20px;
 color:white;
 text-shadow:
-0 0 5px #a855f7,
-0 0 15px #a855f7;
+0 0 5px #fff,
+0 0 15px #fff,
+0 0 25px #fff;
 }
 
 .input-box{
 width:650px;
 max-width:90vw;
 padding:18px;
-border:none;
+border:1px solid #7c3aed;
 outline:none;
 border-radius:14px;
-background:#111;
+background:#000;
 color:white;
 font-size:16px;
+}
+
+.input-box:focus{
+box-shadow:0 0 20px #7c3aed;
 }
 
 .btn{
@@ -107,7 +114,15 @@ border-radius:12px;
 background:#7c3aed;
 color:white;
 cursor:pointer;
+font-size:16px;
+transition:.3s;
 }
+
+.btn:hover{
+background:#9333ea;
+transform:scale(1.05);
+}
+
 </style>
 </head>
 
@@ -129,25 +144,24 @@ cursor:pointer;
 <div class="main">
 
 <div id="home" class="page active">
-<h1>Nawy.ai</h1>
+<h1 class="title">Nawy.ai</h1>
 </div>
 
 <div id="youtube" class="page">
 <h1 class="title">YouTube URL</h1>
 
-<input class="input-box"
+<input class="input-box" type="text"
 placeholder="YouTube linkini yapıştır...">
 
 <button class="btn">Özet Çıkar</button>
 </div>
 
 <div id="podcast" class="page">
-<h1 class="title">PodCast URL</h1>
+<h1 class="title">Upload Podcast</h1>
 
-<input class="input-box"
-placeholder="Podcast linkini yapıştır...">
+<input class="input-box" type="file">
 
-<button class="btn">Özet Çıkar</button>
+<button class="btn">Dosya Yükle</button>
 </div>
 
 <div id="settings" class="page">
@@ -157,6 +171,7 @@ placeholder="Podcast linkini yapıştır...">
 </div>
 
 <script>
+
 function showPage(pageId){
 
 document.querySelectorAll('.page').forEach(page=>{
@@ -166,6 +181,7 @@ page.classList.remove('active');
 document.getElementById(pageId).classList.add('active');
 
 }
+
 </script>
 
 </body>
