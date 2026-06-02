@@ -24,7 +24,7 @@ display:flex;
 overflow:hidden;
 }
 
-/* SOL MENU */
+/* SIDEBAR */
 
 .sidebar{
 width:250px;
@@ -41,8 +41,6 @@ margin-bottom:40px;
 color:#e5e5e5;
 }
 
-/* MENU */
-
 .menu a{
 display:block;
 padding:14px;
@@ -58,7 +56,7 @@ transition:.3s;
 background:#6d28d9;
 }
 
-/* SOSYAL MEDYA */
+/* SOCIAL */
 
 .socials{
 position:absolute;
@@ -78,37 +76,10 @@ text-decoration:none;
 color:white;
 font-size:18px;
 position:relative;
+opacity:0.8;
 }
 
-.social::before{
-content:"";
-position:absolute;
-inset:0;
-padding:2px;
-border-radius:8px;
-
-background:linear-gradient(
-90deg,
-#5b21b6,
-#7c3aed,
-#5b21b6
-);
-
-background-size:300% 300%;
-animation:borderMove 4s linear infinite;
-
--webkit-mask:
-linear-gradient(#fff 0 0) content-box,
-linear-gradient(#fff 0 0);
-
--webkit-mask-composite:xor;
-mask-composite:exclude;
-
-filter:drop-shadow(0 0 2px #7c3aed);
-opacity:0.7;
-}
-
-/* SAG UST */
+/* TOP */
 
 .top-buttons{
 position:absolute;
@@ -120,41 +91,15 @@ z-index:999;
 }
 
 .neon-btn{
-position:relative;
 padding:12px 24px;
+border-radius:12px;
 color:white;
 text-decoration:none;
-border-radius:12px;
+border:1px solid #5b21b6;
+opacity:0.8;
 }
 
-.neon-btn::before{
-content:"";
-position:absolute;
-inset:0;
-padding:2px;
-border-radius:12px;
-
-background:linear-gradient(
-90deg,
-#5b21b6,
-#7c3aed,
-#5b21b6
-);
-
-background-size:300% 300%;
-animation:borderMove 4s linear infinite;
-
--webkit-mask:
-linear-gradient(#fff 0 0) content-box,
-linear-gradient(#fff 0 0);
-
--webkit-mask-composite:xor;
-mask-composite:exclude;
-
-opacity:0.6;
-}
-
-/* ANA ALAN */
+/* MAIN */
 
 .main{
 flex:1;
@@ -168,7 +113,7 @@ position:relative;
 display:none;
 flex-direction:column;
 align-items:center;
-animation:fade .35s ease;
+animation:fade .3s ease;
 }
 
 .page.active{
@@ -176,27 +121,13 @@ display:flex;
 }
 
 @keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
+from{opacity:0;transform:translateY(15px);}
+to{opacity:1;transform:translateY(0);}
 }
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@keyframes borderMove{
-0%{background-position:0% 50%;}
-100%{background-position:300% 50%;}
-}
-
-/* BASLIK */
 
 .title{
-font-size:42px;
+font-size:40px;
 margin-bottom:20px;
-text-shadow:none;
 color:#f5f5f5;
 }
 
@@ -210,15 +141,10 @@ border-radius:14px;
 border:1px solid #5b21b6;
 background:#000;
 color:white;
-outline:none;
 font-size:16px;
 }
 
-.input-box:focus{
-box-shadow:0 0 6px #5b21b6;
-}
-
-/* BUTON */
+/* BUTTON */
 
 .btn{
 margin-top:15px;
@@ -228,22 +154,36 @@ border-radius:12px;
 background:#6d28d9;
 color:white;
 cursor:pointer;
-font-size:16px;
-transition:.25s;
 }
 
-.btn:hover{
-background:#7c3aed;
-transform:scale(1.03);
-}
+/* PODCAST UPLOAD BOX */
 
-/* CUSTOM FILE */
-
-.file-wrapper{
-margin-top:10px;
+.upload-box{
+width:500px;
+max-width:90vw;
+height:220px;
+border:2px dashed #5b21b6;
+border-radius:16px;
 display:flex;
 flex-direction:column;
 align-items:center;
+justify-content:center;
+gap:15px;
+background:#050505;
+text-align:center;
+padding:20px;
+}
+
+.upload-box span{
+font-size:14px;
+opacity:0.8;
+}
+
+.file-name{
+font-size:14px;
+color:#a855f7;
+margin-top:10px;
+word-break:break-all;
 }
 
 input[type="file"]{
@@ -251,17 +191,10 @@ display:none;
 }
 
 .file-label{
-padding:14px 25px;
-border-radius:12px;
+padding:12px 20px;
 border:1px solid #5b21b6;
+border-radius:10px;
 cursor:pointer;
-color:white;
-background:#000;
-transition:.3s;
-}
-
-.file-label:hover{
-background:#111;
 }
 
 </style>
@@ -276,21 +209,19 @@ background:#111;
 
 <div class="sidebar">
 
-<div class="logo">
-NAWY.AI
-</div>
+<div class="logo">NAWY.AI</div>
 
 <div class="menu">
 <a onclick="showPage('home')">🏠 Ana Sayfa</a>
 <a onclick="showPage('youtube')">🎥 YouTube</a>
-<a onclick="showPage('podcast')">🎙️ PodCast</a>
+<a onclick="showPage('podcast')">🎙️ Podcast</a>
 <a onclick="showPage('settings')">⚙️ Ayarlar</a>
 </div>
 
 <div class="socials">
-<a href="#" class="social"><i class="fa-brands fa-discord"></i></a>
-<a href="#" class="social"><i class="fa-brands fa-instagram"></i></a>
-<a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+<a href="#"><i class="fa-brands fa-discord"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+<a href="#"><i class="fa-brands fa-tiktok"></i></a>
 </div>
 
 </div>
@@ -303,21 +234,29 @@ NAWY.AI
 
 <div id="youtube" class="page">
 <h1 class="title">YouTube URL</h1>
-
 <input class="input-box" type="text" placeholder="YouTube linkini yapıştır...">
-
 <button class="btn">Özet Çıkar</button>
 </div>
 
+<!-- PODCAST -->
 <div id="podcast" class="page">
+
 <h1 class="title">Podcast</h1>
 
-<div class="file-wrapper">
-<label class="file-label" for="fileUpload">Dosya Seç</label>
+<div class="upload-box">
+<span>Dosyanı yükle</span>
+
+<label class="file-label" for="fileUpload">
+Dosya Seç
+</label>
+
 <input id="fileUpload" type="file">
+
+<div id="fileName" class="file-name">Henüz dosya seçilmedi</div>
 </div>
 
 <button class="btn">Yükle</button>
+
 </div>
 
 <div id="settings" class="page">
@@ -329,11 +268,19 @@ NAWY.AI
 <script>
 
 function showPage(pageId){
-document.querySelectorAll('.page').forEach(page=>{
-page.classList.remove('active');
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
 });
 document.getElementById(pageId).classList.add('active');
 }
+
+/* DOSYA ADI GOSTER */
+
+document.getElementById("fileUpload").addEventListener("change", function(){
+const fileName = this.files[0]?.name;
+document.getElementById("fileName").textContent =
+fileName ? fileName : "Henüz dosya seçilmedi";
+});
 
 </script>
 
