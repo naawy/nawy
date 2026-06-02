@@ -24,205 +24,163 @@ display:flex;
 overflow:hidden;
 }
 
-/* SIDEBAR */
+/* SIDEBAR (BOYUT SABİT) */
 .sidebar{
-width:320px;
+width:260px;
 background:#090909;
 border-right:1px solid #151515;
 padding:20px;
-padding-top:85px;
 position:relative;
-transition:.35s ease;
 overflow:hidden;
-}
-
-.sidebar.collapsed{
-width:110px;
 }
 
 /* TOGGLE BUTTON */
 .toggle-btn{
 position:absolute;
-top:12px;
-left:12px;
-width:52px;
-height:52px;
-display:flex;
-align-items:center;
-justify-content:center;
+top:18px;
+left:18px;
 cursor:pointer;
-font-size:20px;
-border-radius:12px;
+font-size:18px;
+padding:8px 10px;
+border-radius:8px;
 border:1px solid #2a2a2a;
 background:#0f0f0f;
-z-index:999;
-transition:.3s;
+transition:0.3s;
+z-index:10;
 }
 
 .toggle-btn:hover{
-background:#141414;
-border-color:#7c3aed;
-box-shadow:0 0 15px rgba(124,58,237,.5);
+background:#111;
 }
 
 /* LOGO */
 .logo{
-display:flex;
-justify-content:center;
-align-items:center;
-height:80px;
-margin-bottom:20px;
-}
-
-.logo span{
-font-size:26px;
-font-weight:700;
-color:#fff;
-transition:.3s;
-}
-
-.sidebar.collapsed .logo span{
-opacity:0;
-transform:translateX(-20px);
+margin-left:45px;
+margin-bottom:40px;
+font-size:20px;
+font-weight:bold;
+color:#e5e5e5;
 }
 
 /* MENU */
-.menu{
-margin-top:15px;
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-
 .menu a{
 display:flex;
 align-items:center;
-gap:16px;
-height:72px;
-padding:0 18px;
-border-radius:18px;
-cursor:pointer;
-text-decoration:none;
+gap:12px;
+padding:14px;
+margin-bottom:10px;
+border-radius:14px;
 color:white;
+text-decoration:none;
+cursor:pointer;
+transition:.25s;
+}
+
+.menu a i{
+width:38px;
+height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:12px;
+background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
+border:1px solid #2a2a2a;
+color:#f5f5f5;
 transition:.25s;
 }
 
 .menu a:hover{
 background:#111;
-box-shadow:0 0 15px rgba(124,58,237,.35);
-}
-
-/* ICON BOX */
-.menu a i{
-width:52px;
-height:52px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:14px;
-font-size:20px;
-background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
-border:1px solid #2a2a2a;
-transition:.25s;
+box-shadow:0 0 10px rgba(124,58,237,0.5);
 }
 
 .menu a:hover i{
 border-color:#7c3aed;
-box-shadow:0 0 15px rgba(124,58,237,.7);
+box-shadow:0 0 10px rgba(124,58,237,0.7);
 color:#a855f7;
-}
-
-/* TEXT */
-.menu a span{
-font-size:17px;
-font-weight:500;
-transition:.3s;
-white-space:nowrap;
-}
-
-.sidebar.collapsed .menu a{
-justify-content:center;
-padding:0;
-}
-
-.sidebar.collapsed .menu a span{
-display:none;
 }
 
 /* SOCIALS */
 .socials{
 position:absolute;
-bottom:25px;
+bottom:20px;
 left:20px;
 display:flex;
-gap:12px;
-}
-
-.sidebar.collapsed .socials{
-display:none;
+gap:10px;
 }
 
 .social{
-width:45px;
-height:45px;
+width:40px;
+height:40px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-radius:12px;
+border-radius:10px;
 border:1px solid #222;
-color:white;
-text-decoration:none;
+color:#f5f5f5;
 transition:.3s;
 }
 
 .social:hover{
-transform:translateY(-3px);
-border-color:#7c3aed;
-box-shadow:0 0 12px rgba(124,58,237,.5);
+transform:translateY(-3px) scale(1.05);
 }
 
 /* MAIN */
 .main{
 flex:1;
-position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
+position:relative;
 }
 
-/* PAGES */
+/* PAGE ANIMATION */
 .page{
 position:absolute;
+opacity:0;
+transform:scale(1.08) translateY(20px);
+filter:blur(8px);
+pointer-events:none;
+transition:0.4s ease;
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:center;
-
-opacity:0;
-transform:translateY(25px) scale(1.05);
-filter:blur(8px);
-
-pointer-events:none;
-transition:.4s ease;
 }
 
 .page.active{
 opacity:1;
-transform:translateY(0) scale(1);
+transform:scale(1) translateY(0);
 filter:blur(0);
 pointer-events:auto;
 }
 
-.title{
-font-size:52px;
-font-weight:700;
+/* TOP BUTTONS */
+.top-buttons{
+position:absolute;
+top:20px;
+right:25px;
+display:flex;
+gap:15px;
 }
 
-.subtitle{
-margin-top:10px;
-opacity:.7;
-font-size:18px;
+.neon-btn{
+padding:12px 24px;
+border-radius:12px;
+color:white;
+text-decoration:none;
+border:1px solid #5b21b6;
+opacity:0.8;
+}
+
+.title{
+font-size:40px;
+margin-bottom:20px;
+}
+
+/* TOGGLE MOVE ANIMATION */
+.sidebar.move-toggle .toggle-btn{
+left:18px;
+top:18px;
 }
 
 </style>
@@ -230,89 +188,95 @@ font-size:18px;
 
 <body>
 
+<div class="top-buttons">
+<a href="#" class="neon-btn">Oturum Aç</a>
+<a href="#" class="neon-btn">Kayıt Ol</a>
+</div>
+
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
-<div class="toggle-btn" onclick="toggleSidebar()">
+<div class="toggle-btn" onclick="toggleUI()">
 <i class="fa-solid fa-bars"></i>
 </div>
 
-<div class="logo">
-<span>NAWY AI</span>
-</div>
+<div class="logo">nawy ai</div>
 
 <div class="menu">
 
 <a onclick="showPage('home')">
-<i class="fa-solid fa-house"></i>
-<span>Ana Sayfa</span>
+<i class="fa-solid fa-house"></i><span>Ana Sayfa</span>
 </a>
 
 <a onclick="showPage('youtube')">
-<i class="fa-brands fa-youtube"></i>
-<span>YouTube</span>
+<i class="fa-brands fa-youtube"></i><span>YouTube</span>
 </a>
 
 <a onclick="showPage('podcast')">
-<i class="fa-solid fa-microphone"></i>
-<span>Podcast</span>
+<i class="fa-solid fa-microphone"></i><span>Podcast</span>
 </a>
 
 <a onclick="showPage('settings')">
-<i class="fa-solid fa-gear"></i>
-<span>Ayarlar</span>
+<i class="fa-solid fa-gear"></i><span>Ayarlar</span>
 </a>
 
 </div>
 
 <div class="socials">
-<a href="#" class="social"><i class="fa-brands fa-discord"></i></a>
-<a href="#" class="social"><i class="fa-brands fa-instagram"></i></a>
-<a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+<a class="social"><i class="fa-brands fa-discord"></i></a>
+<a class="social"><i class="fa-brands fa-instagram"></i></a>
+<a class="social"><i class="fa-brands fa-tiktok"></i></a>
 </div>
 
 </div>
 
+<!-- MAIN -->
 <div class="main">
 
 <div id="home" class="page active">
 <h1 class="title">Welcome to Nawy.ai</h1>
-<p class="subtitle">AI destekli içerik merkezi</p>
 </div>
 
 <div id="youtube" class="page">
 <h1 class="title">YouTube</h1>
-<p class="subtitle">Video içerikleri burada</p>
 </div>
 
 <div id="podcast" class="page">
 <h1 class="title">Podcast</h1>
-<p class="subtitle">Podcast içerikleri burada</p>
 </div>
 
 <div id="settings" class="page">
 <h1 class="title">Ayarlar</h1>
-<p class="subtitle">Sistem ayarları</p>
 </div>
 
 </div>
 
 <script>
 
-function toggleSidebar(){
-document.getElementById("sidebar")
-.classList.toggle("collapsed");
+let moved = false;
+
+function toggleUI(){
+
+const sidebar = document.getElementById("sidebar");
+const btn = document.querySelector(".toggle-btn");
+
+moved = !moved;
+
+/* sadece ikonun “ışınlanma hissi” */
+if(moved){
+btn.style.transform = "translateX(0px)";
+}else{
+btn.style.transform = "translateX(0px)";
+}
+
+/* ileride kullanmak için toggle state */
+sidebar.classList.toggle("active");
+
 }
 
 function showPage(id){
-
-document.querySelectorAll(".page")
-.forEach(page=>{
-page.classList.remove("active");
-});
-
-document.getElementById(id)
-.classList.add("active");
-
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
 
 </script>
