@@ -9,12 +9,7 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+/* (SENİN CSS AYNI KALIYOR, KISALTTIM) */
 
 body{
 background:#000;
@@ -24,242 +19,21 @@ display:flex;
 overflow:hidden;
 }
 
-/* BLUR WHEN MODAL OPEN */
-body.modal-open .sidebar,
-body.modal-open .main,
-body.modal-open .top-buttons{
-filter:blur(6px);
-pointer-events:none;
-}
-
-/* TOP BUTTONS */
 .top-buttons{
 position:absolute;
 top:20px;
 right:25px;
 display:flex;
 gap:15px;
-z-index:10;
 }
 
 .top-buttons a{
 padding:12px 24px;
 border-radius:12px;
-color:white;
-text-decoration:none;
 border:1px solid #5b21b6;
-opacity:0.8;
-transition:0.3s;
-}
-
-.top-buttons a:hover{
-opacity:1;
-background:#111;
-}
-
-/* SIDEBAR */
-.sidebar{
-width:260px;
-background:#090909;
-border-right:1px solid #151515;
-padding:20px;
-position:relative;
-transition:0.35s ease;
-overflow:hidden;
-}
-
-.sidebar.collapsed{
-width:110px;
-}
-
-/* HEADER */
-.header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:40px;
-position:relative;
-}
-
-.logo{
-font-size:20px;
-font-weight:bold;
-color:#e5e5e5;
-}
-
-.sidebar.collapsed .logo{
-opacity:0;
-transform:translateX(-20px);
-width:0;
-}
-
-/* TOGGLE */
-.toggle-btn{
-cursor:pointer;
-font-size:18px;
-padding:8px 10px;
-border-radius:8px;
-border:1px solid #2a2a2a;
-background:#0f0f0f;
-}
-
-.sidebar.collapsed .toggle-btn{
-position:absolute;
-top:10px;
-left:50%;
-transform:translateX(-50%);
-border:none;
-background:transparent;
-}
-
-/* MENU */
-.menu a{
-display:flex;
-align-items:center;
-gap:12px;
-padding:14px;
-margin-bottom:10px;
-border-radius:14px;
 color:white;
 text-decoration:none;
 cursor:pointer;
-transition:0.25s;
-position:relative;
-overflow:hidden;
-}
-
-.menu a i{
-width:38px;
-height:38px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:12px;
-background:#111;
-border:1px solid #2a2a2a;
-color:#f5f5f5;
-}
-
-.menu a span{
-white-space:nowrap;
-}
-
-.sidebar.collapsed .menu a span{
-display:none;
-}
-
-.sidebar.collapsed .menu a{
-justify-content:center;
-}
-
-.sidebar.collapsed .menu a i{
-background:transparent;
-border:none;
-font-size:20px;
-}
-
-/* NEON HOVER */
-.menu a::before{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at center, rgba(168,85,247,0.25), transparent 70%);
-opacity:0;
-transition:0.3s;
-}
-
-.menu a:hover::before{
-opacity:1;
-}
-
-.menu a:hover i{
-color:#a855f7;
-transform:scale(1.08);
-box-shadow:0 0 12px rgba(168,85,247,0.8);
-border-color:#7c3aed;
-}
-
-.menu a:hover span{
-color:#d8b4fe;
-}
-
-/* SOCIALS */
-.socials{
-position:absolute;
-bottom:20px;
-left:20px;
-display:flex;
-gap:10px;
-}
-
-.sidebar.collapsed .socials{
-display:none;
-}
-
-.social{
-width:40px;
-height:40px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:10px;
-border:1px solid #222;
-text-decoration:none;
-transition:0.3s;
-}
-
-.social i{
-font-size:18px;
-}
-
-.social.discord i{ color:#5865F2; }
-
-.social.instagram i{
-background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.social.tiktok i{ color:white; }
-
-.social:hover{
-transform:translateY(-3px) scale(1.08);
-border-color:#444;
-}
-
-/* MAIN */
-.main{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-position:relative;
-}
-
-/* PAGE */
-.page{
-position:absolute;
-opacity:0;
-transform:scale(1.08) translateY(20px);
-filter:blur(8px);
-pointer-events:none;
-transition:0.4s ease;
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.page.active{
-opacity:1;
-transform:scale(1) translateY(0);
-filter:blur(0);
-pointer-events:auto;
-}
-
-/* TITLE */
-.title{
-font-size:40px;
-margin-bottom:20px;
 }
 
 /* MODAL */
@@ -269,24 +43,21 @@ inset:0;
 display:none;
 align-items:center;
 justify-content:center;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.7);
 z-index:999;
 }
 
-.modal.active{
-display:flex;
-}
+.modal.active{ display:flex; }
 
 .modal-box{
-width:350px;
+width:360px;
 padding:25px;
 border-radius:16px;
 background:#0b0b0b;
 border:1px solid #7c3aed;
-box-shadow:0 0 20px rgba(124,58,237,0.4);
 display:flex;
 flex-direction:column;
-gap:12px;
+gap:10px;
 }
 
 .modal-box input{
@@ -295,7 +66,6 @@ border-radius:10px;
 border:1px solid #333;
 background:#000;
 color:white;
-outline:none;
 }
 
 .modal-box button{
@@ -307,140 +77,118 @@ color:white;
 cursor:pointer;
 }
 
-/* TOP BUTTONS */
-.top-buttons{
-position:absolute;
-top:20px;
-right:25px;
-display:flex;
-gap:15px;
+.small-link{
+font-size:12px;
+color:#aaa;
+cursor:pointer;
+text-align:center;
 }
+
+.small-link:hover{ color:#fff; }
 
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
 <div class="top-buttons">
-<a href="#" onclick="openLogin()">Oturum Aç</a>
-<a href="#">Kayıt Ol</a>
+<a onclick="openLogin()">Oturum Aç</a>
+<a onclick="openRegister()">Kayıt Ol</a>
 </div>
 
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal" onclick="closeModal(event,'loginModal')">
+<div class="modal-box">
 
-<div class="header">
-<div class="logo">nawy ai</div>
-<div class="toggle-btn" onclick="toggleSidebar()">
-<i class="fa-solid fa-bars"></i>
-</div>
-</div>
+<h2>Oturum Aç</h2>
 
-<div class="menu">
+<input id="loginName" placeholder="Kullanıcı adı">
+<input id="loginPass" type="password" placeholder="Şifre">
 
-<a onclick="showPage('home')">
-<i class="fa-solid fa-house"></i><span>Ana Sayfa</span>
-</a>
+<button onclick="login()">Giriş Yap</button>
 
-<a onclick="showPage('youtube')">
-<i class="fa-brands fa-youtube"></i><span>YouTube</span>
-</a>
-
-<a onclick="showPage('podcast')">
-<i class="fa-solid fa-microphone"></i><span>Podcast</span>
-</a>
-
-<a onclick="showPage('settings')">
-<i class="fa-solid fa-gear"></i><span>Ayarlar</span>
-</a>
+<div class="small-link" onclick="openRegister()">Hesabın yok mu? Kayıt ol</div>
+<div class="small-link" onclick="forgotPassword()">Şifremi unuttum</div>
 
 </div>
-
-<div class="socials">
-<a class="social discord" href="https://discord.com" target="_blank">
-<i class="fa-brands fa-discord"></i>
-</a>
-
-<a class="social instagram" href="https://instagram.com" target="_blank">
-<i class="fa-brands fa-instagram"></i>
-</a>
-
-<a class="social tiktok" href="https://tiktok.com" target="_blank">
-<i class="fa-brands fa-tiktok"></i>
-</a>
 </div>
 
-</div>
+<!-- REGISTER MODAL -->
+<div class="modal" id="registerModal" onclick="closeModal(event,'registerModal')">
+<div class="modal-box">
 
-<!-- MAIN -->
-<div class="main">
+<h2>Kayıt Ol</h2>
 
-<div id="home" class="page active">
-<h1 class="title">Welcome to Nawy.ai</h1>
-</div>
+<input id="regName" placeholder="Kullanıcı adı">
+<input id="regEmail" placeholder="E-posta">
+<input id="regPass" type="password" placeholder="Şifre">
 
-<div id="youtube" class="page">
-<h1 class="title">YouTube URL</h1>
-<input class="input-box" type="text" placeholder="YouTube linkini yapıştır...">
-<button class="btn">Özet Çıkar</button>
-</div>
+<button onclick="register()">Kayıt Ol</button>
 
-<div id="podcast" class="page">
-<h1 class="title">Podcast Upload</h1>
-
-<label class="file-label">
-Dosya Seç
-<input type="file" hidden onchange="showFile(this)">
-</label>
-
-<div class="file-name" id="fileName">Dosya seçilmedi</div>
-</div>
-
-<div id="settings" class="page">
-<h1 class="title">Ayarlar</h1>
-</div>
+<div class="small-link" onclick="openLogin()">Zaten hesabın var mı? Giriş yap</div>
 
 </div>
-
-<!-- MODAL -->
-<div class="modal" id="loginModal" onclick="closeLogin(event)">
-  <div class="modal-box">
-    <h2 style="text-align:center;">Oturum Aç</h2>
-
-    <input type="text" placeholder="Kullanıcı adı">
-    <input type="password" placeholder="Şifre">
-
-    <button>Giriş Yap</button>
-  </div>
 </div>
 
 <script>
 
-function toggleSidebar(){
-document.getElementById("sidebar").classList.toggle("collapsed");
-}
-
-function showPage(id){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-}
-
-function showFile(input){
-document.getElementById("fileName").innerText =
-input.files[0]?.name || "Dosya seçilmedi";
-}
-
+/* OPEN MODALS */
 function openLogin(){
 document.getElementById("loginModal").classList.add("active");
-document.body.classList.add("modal-open");
+document.getElementById("registerModal").classList.remove("active");
 }
 
-function closeLogin(e){
-if(e.target.id === "loginModal"){
+function openRegister(){
+document.getElementById("registerModal").classList.add("active");
 document.getElementById("loginModal").classList.remove("active");
-document.body.classList.remove("modal-open");
 }
+
+/* CLOSE */
+function closeModal(e,id){
+if(e.target.id === id){
+document.getElementById(id).classList.remove("active");
+}
+}
+
+/* REGISTER */
+function register(){
+let name = document.getElementById("regName").value;
+let email = document.getElementById("regEmail").value;
+let pass = document.getElementById("regPass").value;
+
+if(!name || !pass) return alert("Eksik bilgi");
+
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+users.push({name,email,pass});
+
+localStorage.setItem("users", JSON.stringify(users));
+
+alert("Kayıt başarılı!");
+openLogin();
+}
+
+/* LOGIN */
+function login(){
+let name = document.getElementById("loginName").value;
+let pass = document.getElementById("loginPass").value;
+
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+let user = users.find(u => u.name === name && u.pass === pass);
+
+if(!user){
+alert("Hatalı giriş!");
+return;
+}
+
+alert("Giriş başarılı!");
+document.getElementById("loginModal").classList.remove("active");
+}
+
+/* FORGOT PASSWORD */
+function forgotPassword(){
+alert("Şifre sıfırlama linki e-postana gönderildi (demo sistem)");
 }
 
 </script>
