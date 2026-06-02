@@ -24,7 +24,7 @@ display:flex;
 overflow:hidden;
 }
 
-/* TOP */
+/* TOP BUTTONS */
 .top-buttons{
 position:absolute;
 top:20px;
@@ -40,6 +40,13 @@ border-radius:12px;
 color:white;
 text-decoration:none;
 border:1px solid #5b21b6;
+opacity:0.8;
+transition:0.3s;
+}
+
+.top-buttons a:hover{
+opacity:1;
+background:#111;
 }
 
 /* SIDEBAR */
@@ -57,21 +64,17 @@ overflow:hidden;
 width:110px;
 }
 
-/* HEADER (SABİT KALIR) */
+/* HEADER */
 .header{
 display:flex;
 align-items:center;
 justify-content:space-between;
 margin-bottom:40px;
-position:relative;
 }
 
-/* LOGO ASLA SİLİNMEZ */
 .logo{
 font-size:20px;
 font-weight:bold;
-color:white;
-transition:0.3s;
 }
 
 /* TOGGLE */
@@ -82,14 +85,6 @@ padding:8px 10px;
 border-radius:8px;
 border:1px solid #2a2a2a;
 background:#0f0f0f;
-}
-
-/* COLLAPSED TOGGLE = SADECE YER DEĞİŞTİRİR */
-.sidebar.collapsed .toggle-btn{
-position:absolute;
-top:0;
-left:50%;
-transform:translateX(-50%);
 }
 
 /* MENU */
@@ -104,7 +99,6 @@ color:white;
 text-decoration:none;
 cursor:pointer;
 transition:0.25s;
-position:relative;
 }
 
 .menu a i{
@@ -118,7 +112,6 @@ background:#111;
 border:1px solid #2a2a2a;
 }
 
-/* TEXT */
 .menu a span{
 white-space:nowrap;
 }
@@ -135,12 +128,6 @@ justify-content:center;
 background:transparent;
 border:none;
 font-size:20px;
-}
-
-/* NEON HOVER */
-.menu a:hover i{
-color:#a855f7;
-box-shadow:0 0 10px rgba(124,58,237,0.8);
 }
 
 /* SOCIALS */
@@ -164,6 +151,22 @@ align-items:center;
 justify-content:center;
 border-radius:10px;
 border:1px solid #222;
+transition:0.3s;
+}
+
+/* SOCIAL COLORS */
+.social.discord i{ color:#5865F2; }
+
+.social.instagram i{
+background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.social.tiktok i{ color:white; }
+
+.social:hover{
+transform:translateY(-3px) scale(1.05);
 }
 
 /* MAIN */
@@ -175,7 +178,7 @@ align-items:center;
 position:relative;
 }
 
-/* PAGE */
+/* PAGES */
 .page{
 position:absolute;
 opacity:0;
@@ -195,9 +198,39 @@ filter:blur(0);
 pointer-events:auto;
 }
 
-/* TITLE */
-h1{
-font-size:40px;
+/* INPUT */
+.input-box{
+width:500px;
+padding:15px;
+border-radius:12px;
+border:1px solid #7c3aed;
+background:#000;
+color:white;
+margin-top:10px;
+}
+
+.btn{
+margin-top:15px;
+padding:12px 25px;
+background:#7c3aed;
+border:none;
+border-radius:12px;
+color:white;
+cursor:pointer;
+}
+
+.file-label{
+display:inline-block;
+margin-top:10px;
+padding:12px 20px;
+border:1px solid #7c3aed;
+border-radius:12px;
+cursor:pointer;
+}
+
+.file-name{
+margin-top:10px;
+color:#aaa;
 }
 
 </style>
@@ -205,7 +238,7 @@ font-size:40px;
 
 <body>
 
-<!-- TOP -->
+<!-- TOP LOGIN -->
 <div class="top-buttons">
 <a href="#">Oturum Aç</a>
 <a href="#">Kayıt Ol</a>
@@ -215,13 +248,10 @@ font-size:40px;
 <div class="sidebar" id="sidebar">
 
 <div class="header">
-
 <div class="logo">nawy ai</div>
-
 <div class="toggle-btn" onclick="toggleSidebar()">
 <i class="fa-solid fa-bars"></i>
 </div>
-
 </div>
 
 <div class="menu">
@@ -245,9 +275,9 @@ font-size:40px;
 </div>
 
 <div class="socials">
-<a class="social"><i class="fa-brands fa-discord"></i></a>
-<a class="social"><i class="fa-brands fa-instagram"></i></a>
-<a class="social"><i class="fa-brands fa-tiktok"></i></a>
+<a class="social discord"><i class="fa-brands fa-discord"></i></a>
+<a class="social instagram"><i class="fa-brands fa-instagram"></i></a>
+<a class="social tiktok"><i class="fa-brands fa-tiktok"></i></a>
 </div>
 
 </div>
@@ -260,11 +290,20 @@ font-size:40px;
 </div>
 
 <div id="youtube" class="page">
-<h1>YouTube</h1>
+<h1>YouTube URL</h1>
+<input class="input-box" placeholder="YouTube linkini yapıştır...">
+<button class="btn">Özet Çıkar</button>
 </div>
 
 <div id="podcast" class="page">
-<h1>Podcast</h1>
+<h1>Podcast Upload</h1>
+
+<label class="file-label">
+Dosya Seç
+<input type="file" hidden onchange="showFile(this)">
+</label>
+
+<div class="file-name" id="fileName">Dosya seçilmedi</div>
 </div>
 
 <div id="settings" class="page">
@@ -282,6 +321,11 @@ document.getElementById("sidebar").classList.toggle("collapsed");
 function showPage(id){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
+}
+
+function showFile(input){
+document.getElementById("fileName").innerText =
+input.files[0]?.name || "Dosya seçilmedi";
 }
 
 </script>
