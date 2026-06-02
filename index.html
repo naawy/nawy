@@ -24,47 +24,15 @@ display:flex;
 overflow:hidden;
 }
 
-/* BLUR WHEN MODAL OPEN */
-body.modal-open .sidebar,
-body.modal-open .main,
-body.modal-open .top-buttons{
-filter:blur(6px);
-pointer-events:none;
-}
-
-/* TOP BUTTONS */
-.top-buttons{
-position:absolute;
-top:20px;
-right:25px;
-display:flex;
-gap:15px;
-z-index:10;
-}
-
-.top-buttons a{
-padding:12px 24px;
-border-radius:12px;
-color:white;
-text-decoration:none;
-border:1px solid #5b21b6;
-opacity:0.8;
-transition:0.3s;
-}
-
-.top-buttons a:hover{
-opacity:1;
-background:#111;
-}
-
 /* SIDEBAR */
 .sidebar{
-width:260px;
+width:320px;
 background:#090909;
 border-right:1px solid #151515;
 padding:20px;
+padding-top:85px;
 position:relative;
-transition:0.35s ease;
+transition:.35s ease;
 overflow:hidden;
 }
 
@@ -72,124 +40,122 @@ overflow:hidden;
 width:110px;
 }
 
-/* HEADER */
-.header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:40px;
-position:relative;
-}
-
-.logo{
-font-size:20px;
-font-weight:bold;
-color:#e5e5e5;
-}
-
-.sidebar.collapsed .logo{
-opacity:0;
-transform:translateX(-20px);
-width:0;
-}
-
-/* TOGGLE */
+/* TOGGLE BUTTON */
 .toggle-btn{
-cursor:pointer;
-font-size:18px;
-padding:8px 10px;
-border-radius:8px;
-border:1px solid #2a2a2a;
-background:#0f0f0f;
-}
-
-.sidebar.collapsed .toggle-btn{
 position:absolute;
-top:10px;
-left:50%;
-transform:translateX(-50%);
-border:none;
-background:transparent;
-}
-
-/* MENU */
-.menu a{
-display:flex;
-align-items:center;
-gap:12px;
-padding:14px;
-margin-bottom:10px;
-border-radius:14px;
-color:white;
-text-decoration:none;
-cursor:pointer;
-transition:0.25s;
-position:relative;
-overflow:hidden;
-}
-
-.menu a i{
-width:38px;
-height:38px;
+top:12px;
+left:12px;
+width:52px;
+height:52px;
 display:flex;
 align-items:center;
 justify-content:center;
+cursor:pointer;
+font-size:20px;
 border-radius:12px;
-background:#111;
 border:1px solid #2a2a2a;
-color:#f5f5f5;
+background:#0f0f0f;
+z-index:999;
+transition:.3s;
 }
 
+.toggle-btn:hover{
+background:#141414;
+border-color:#7c3aed;
+box-shadow:0 0 15px rgba(124,58,237,.5);
+}
+
+/* LOGO */
+.logo{
+display:flex;
+justify-content:center;
+align-items:center;
+height:80px;
+margin-bottom:20px;
+}
+
+.logo span{
+font-size:26px;
+font-weight:700;
+color:#fff;
+transition:.3s;
+}
+
+.sidebar.collapsed .logo span{
+opacity:0;
+transform:translateX(-20px);
+}
+
+/* MENU */
+.menu{
+margin-top:15px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.menu a{
+display:flex;
+align-items:center;
+gap:16px;
+height:72px;
+padding:0 18px;
+border-radius:18px;
+cursor:pointer;
+text-decoration:none;
+color:white;
+transition:.25s;
+}
+
+.menu a:hover{
+background:#111;
+box-shadow:0 0 15px rgba(124,58,237,.35);
+}
+
+/* ICON BOX */
+.menu a i{
+width:52px;
+height:52px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:14px;
+font-size:20px;
+background:linear-gradient(135deg,#1a1a1a,#0f0f0f);
+border:1px solid #2a2a2a;
+transition:.25s;
+}
+
+.menu a:hover i{
+border-color:#7c3aed;
+box-shadow:0 0 15px rgba(124,58,237,.7);
+color:#a855f7;
+}
+
+/* TEXT */
 .menu a span{
+font-size:17px;
+font-weight:500;
+transition:.3s;
 white-space:nowrap;
+}
+
+.sidebar.collapsed .menu a{
+justify-content:center;
+padding:0;
 }
 
 .sidebar.collapsed .menu a span{
 display:none;
 }
 
-.sidebar.collapsed .menu a{
-justify-content:center;
-}
-
-.sidebar.collapsed .menu a i{
-background:transparent;
-border:none;
-font-size:20px;
-}
-
-/* NEON HOVER */
-.menu a::before{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at center, rgba(168,85,247,0.25), transparent 70%);
-opacity:0;
-transition:0.3s;
-}
-
-.menu a:hover::before{
-opacity:1;
-}
-
-.menu a:hover i{
-color:#a855f7;
-transform:scale(1.08);
-box-shadow:0 0 12px rgba(168,85,247,0.8);
-border-color:#7c3aed;
-}
-
-.menu a:hover span{
-color:#d8b4fe;
-}
-
 /* SOCIALS */
 .socials{
 position:absolute;
-bottom:20px;
+bottom:25px;
 left:20px;
 display:flex;
-gap:10px;
+gap:12px;
 }
 
 .sidebar.collapsed .socials{
@@ -197,123 +163,66 @@ display:none;
 }
 
 .social{
-width:40px;
-height:40px;
+width:45px;
+height:45px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-radius:10px;
+border-radius:12px;
 border:1px solid #222;
+color:white;
 text-decoration:none;
-transition:0.3s;
+transition:.3s;
 }
-
-.social i{
-font-size:18px;
-}
-
-.social.discord i{ color:#5865F2; }
-
-.social.instagram i{
-background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.social.tiktok i{ color:white; }
 
 .social:hover{
-transform:translateY(-3px) scale(1.08);
-border-color:#444;
+transform:translateY(-3px);
+border-color:#7c3aed;
+box-shadow:0 0 12px rgba(124,58,237,.5);
 }
 
 /* MAIN */
 .main{
 flex:1;
+position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
-position:relative;
+overflow:hidden;
 }
 
-/* PAGE */
+/* PAGES */
 .page{
 position:absolute;
-opacity:0;
-transform:scale(1.08) translateY(20px);
-filter:blur(8px);
-pointer-events:none;
-transition:0.4s ease;
 display:flex;
 flex-direction:column;
 align-items:center;
+justify-content:center;
+
+opacity:0;
+transform:translateY(25px) scale(1.05);
+filter:blur(8px);
+
+pointer-events:none;
+transition:.4s ease;
 }
 
 .page.active{
 opacity:1;
-transform:scale(1) translateY(0);
+transform:translateY(0) scale(1);
 filter:blur(0);
 pointer-events:auto;
 }
 
-/* TITLE */
 .title{
-font-size:40px;
-margin-bottom:20px;
+font-size:52px;
+font-weight:700;
 }
 
-/* MODAL */
-.modal{
-position:fixed;
-inset:0;
-display:none;
-align-items:center;
-justify-content:center;
-background:rgba(0,0,0,0.6);
-z-index:999;
-}
-
-.modal.active{
-display:flex;
-}
-
-.modal-box{
-width:350px;
-padding:25px;
-border-radius:16px;
-background:#0b0b0b;
-border:1px solid #7c3aed;
-box-shadow:0 0 20px rgba(124,58,237,0.4);
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-
-.modal-box input{
-padding:12px;
-border-radius:10px;
-border:1px solid #333;
-background:#000;
-color:white;
-outline:none;
-}
-
-.modal-box button{
-padding:12px;
-border:none;
-border-radius:10px;
-background:#7c3aed;
-color:white;
-cursor:pointer;
-}
-
-/* TOP BUTTONS */
-.top-buttons{
-position:absolute;
-top:20px;
-right:25px;
-display:flex;
-gap:15px;
+.subtitle{
+margin-top:10px;
+opacity:.7;
+font-size:18px;
 }
 
 </style>
@@ -321,252 +230,92 @@ gap:15px;
 
 <body>
 
-<!-- TOP -->
-<div class="top-buttons">
-<a href="#" onclick="openLogin()">Oturum Aç</a>
-<a href="#" onclick="openRegister()">Kayıt Ol</a>
-</div>
-
-<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
-<div class="header">
-<div class="logo">nawy ai</div>
 <div class="toggle-btn" onclick="toggleSidebar()">
 <i class="fa-solid fa-bars"></i>
 </div>
+
+<div class="logo">
+<span>NAWY AI</span>
 </div>
 
 <div class="menu">
 
 <a onclick="showPage('home')">
-<i class="fa-solid fa-house"></i><span>Ana Sayfa</span>
+<i class="fa-solid fa-house"></i>
+<span>Ana Sayfa</span>
 </a>
 
 <a onclick="showPage('youtube')">
-<i class="fa-brands fa-youtube"></i><span>YouTube</span>
+<i class="fa-brands fa-youtube"></i>
+<span>YouTube</span>
 </a>
 
 <a onclick="showPage('podcast')">
-<i class="fa-solid fa-microphone"></i><span>Podcast</span>
+<i class="fa-solid fa-microphone"></i>
+<span>Podcast</span>
 </a>
 
 <a onclick="showPage('settings')">
-<i class="fa-solid fa-gear"></i><span>Ayarlar</span>
+<i class="fa-solid fa-gear"></i>
+<span>Ayarlar</span>
 </a>
 
 </div>
 
 <div class="socials">
-<a class="social discord" href="https://discord.com" target="_blank">
-<i class="fa-brands fa-discord"></i>
-</a>
-
-<a class="social instagram" href="https://instagram.com" target="_blank">
-<i class="fa-brands fa-instagram"></i>
-</a>
-
-<a class="social tiktok" href="https://tiktok.com" target="_blank">
-<i class="fa-brands fa-tiktok"></i>
-</a>
+<a href="#" class="social"><i class="fa-brands fa-discord"></i></a>
+<a href="#" class="social"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
 </div>
 
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
 <div id="home" class="page active">
 <h1 class="title">Welcome to Nawy.ai</h1>
+<p class="subtitle">AI destekli içerik merkezi</p>
 </div>
 
 <div id="youtube" class="page">
-<h1 class="title">YouTube URL</h1>
-<input class="input-box" type="text" placeholder="YouTube linkini yapıştır...">
-<button class="btn">Özet Çıkar</button>
+<h1 class="title">YouTube</h1>
+<p class="subtitle">Video içerikleri burada</p>
 </div>
 
 <div id="podcast" class="page">
-<h1 class="title">Podcast Upload</h1>
-
-<label class="file-label">
-Dosya Seç
-<input type="file" hidden onchange="showFile(this)">
-</label>
-
-<div class="file-name" id="fileName">Dosya seçilmedi</div>
+<h1 class="title">Podcast</h1>
+<p class="subtitle">Podcast içerikleri burada</p>
 </div>
 
 <div id="settings" class="page">
 <h1 class="title">Ayarlar</h1>
+<p class="subtitle">Sistem ayarları</p>
 </div>
 
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="loginModal" onclick="closeLogin(event)">
-<div class="modal-box" onclick="event.stopPropagation()">
-
-<h2 style="text-align:center;">Oturum Aç</h2>
-
-<input id="loginUser" type="text" placeholder="Kullanıcı Adı">
-
-<input id="loginPass" type="password" placeholder="Şifre">
-
-<div id="loginError"
-style="display:none;color:#ff4d4d;text-align:center;font-size:14px;">
-Yanlış kullanıcı adı veya şifre
-</div>
-
-<div
-onclick="forgotPassword()"
-style="
-text-align:center;
-cursor:pointer;
-color:#a855f7;
-font-size:14px;">
-Şifremi Unuttum
-</div>
-
-<button onclick="login()">
-Giriş Yap
-</button>
-
-</div>
-</div>
-function openRegister(){
-document.getElementById("registerModal").classList.add("active");
-document.body.classList.add("modal-open");
-}
-
-function closeRegister(e){
-if(e.target.id==="registerModal"){
-document.getElementById("registerModal").classList.remove("active");
-document.body.classList.remove("modal-open");
-}
-}
-
-function registerUser(){
-
-const username =
-document.getElementById("registerName").value.trim();
-
-const email =
-document.getElementById("registerEmail").value.trim();
-
-const password =
-document.getElementById("registerPass").value;
-
-if(!username || !email || !password){
-alert("Tüm alanları doldurun.");
-return;
-}
-
-localStorage.setItem("username",username);
-localStorage.setItem("email",email);
-localStorage.setItem("password",password);
-
-alert("Kayıt başarılı!");
-
-document.getElementById("registerModal").classList.remove("active");
-document.body.classList.remove("modal-open");
-}
-
-function login(){
-
-const user =
-document.getElementById("loginUser").value.trim();
-
-const pass =
-document.getElementById("loginPass").value;
-
-const savedUser =
-localStorage.getItem("username");
-
-const savedPass =
-localStorage.getItem("password");
-
-if(user===savedUser && pass===savedPass){
-
-document.getElementById("loginError").style.display="none";
-
-alert("Giriş başarılı!");
-
-document.getElementById("loginModal").classList.remove("active");
-document.body.classList.remove("modal-open");
-
-}else{
-
-document.getElementById("loginError").style.display="block";
-
-}
-}
-
-function forgotPassword(){
-
-const email =
-localStorage.getItem("email");
-
-const pass =
-localStorage.getItem("password");
-
-if(!email){
-alert("Kayıtlı hesap bulunamadı.");
-return;
-}
-
-alert(
-"Kayıtlı E-posta: " +
-email +
-"\nŞifre: " +
-pass
-);
-}
 <script>
 
 function toggleSidebar(){
-document.getElementById("sidebar").classList.toggle("collapsed");
+document.getElementById("sidebar")
+.classList.toggle("collapsed");
 }
 
 function showPage(id){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-}
 
-function showFile(input){
-document.getElementById("fileName").innerText =
-input.files[0]?.name || "Dosya seçilmedi";
-}
+document.querySelectorAll(".page")
+.forEach(page=>{
+page.classList.remove("active");
+});
 
-function openLogin(){
-document.getElementById("loginModal").classList.add("active");
-document.body.classList.add("modal-open");
-}
+document.getElementById(id)
+.classList.add("active");
 
-function closeLogin(e){
-if(e.target.id === "loginModal"){
-document.getElementById("loginModal").classList.remove("active");
-document.body.classList.remove("modal-open");
-}
 }
 
 </script>
-<div class="modal" id="registerModal" onclick="closeRegister(event)">
-<div class="modal-box" onclick="event.stopPropagation()">
 
-<h2 style="text-align:center;">Kayıt Ol</h2>
-
-<input id="registerName" type="text" placeholder="İsim">
-
-<input id="registerEmail" type="email" placeholder="E-Posta">
-
-<input id="registerPass" type="password" placeholder="Şifre">
-
-<button onclick="registerUser()">
-Kayıt Ol
-</button>
-
-</div>
-</div>
 </body>
 </html>
