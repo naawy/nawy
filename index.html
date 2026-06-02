@@ -324,7 +324,7 @@ gap:15px;
 <!-- TOP -->
 <div class="top-buttons">
 <a href="#" onclick="openLogin()">Oturum Aç</a>
-<a href="#">Kayıt Ol</a>
+<a href="#" onclick="openRegister()">Kayıt Ol</a>
 </div>
 
 <!-- SIDEBAR -->
@@ -405,16 +405,123 @@ Dosya Seç
 
 <!-- MODAL -->
 <div class="modal" id="loginModal" onclick="closeLogin(event)">
-  <div class="modal-box">
-    <h2 style="text-align:center;">Oturum Aç</h2>
+<div class="modal-box" onclick="event.stopPropagation()">
 
-    <input type="text" placeholder="Kullanıcı adı">
-    <input type="password" placeholder="Şifre">
+<h2 style="text-align:center;">Oturum Aç</h2>
 
-    <button>Giriş Yap</button>
-  </div>
+<input id="loginUser" type="text" placeholder="Kullanıcı Adı">
+
+<input id="loginPass" type="password" placeholder="Şifre">
+
+<div id="loginError"
+style="display:none;color:#ff4d4d;text-align:center;font-size:14px;">
+Yanlış kullanıcı adı veya şifre
 </div>
 
+<div
+onclick="forgotPassword()"
+style="
+text-align:center;
+cursor:pointer;
+color:#a855f7;
+font-size:14px;">
+Şifremi Unuttum
+</div>
+
+<button onclick="login()">
+Giriş Yap
+</button>
+
+</div>
+</div>
+function openRegister(){
+document.getElementById("registerModal").classList.add("active");
+document.body.classList.add("modal-open");
+}
+
+function closeRegister(e){
+if(e.target.id==="registerModal"){
+document.getElementById("registerModal").classList.remove("active");
+document.body.classList.remove("modal-open");
+}
+}
+
+function registerUser(){
+
+const username =
+document.getElementById("registerName").value.trim();
+
+const email =
+document.getElementById("registerEmail").value.trim();
+
+const password =
+document.getElementById("registerPass").value;
+
+if(!username || !email || !password){
+alert("Tüm alanları doldurun.");
+return;
+}
+
+localStorage.setItem("username",username);
+localStorage.setItem("email",email);
+localStorage.setItem("password",password);
+
+alert("Kayıt başarılı!");
+
+document.getElementById("registerModal").classList.remove("active");
+document.body.classList.remove("modal-open");
+}
+
+function login(){
+
+const user =
+document.getElementById("loginUser").value.trim();
+
+const pass =
+document.getElementById("loginPass").value;
+
+const savedUser =
+localStorage.getItem("username");
+
+const savedPass =
+localStorage.getItem("password");
+
+if(user===savedUser && pass===savedPass){
+
+document.getElementById("loginError").style.display="none";
+
+alert("Giriş başarılı!");
+
+document.getElementById("loginModal").classList.remove("active");
+document.body.classList.remove("modal-open");
+
+}else{
+
+document.getElementById("loginError").style.display="block";
+
+}
+}
+
+function forgotPassword(){
+
+const email =
+localStorage.getItem("email");
+
+const pass =
+localStorage.getItem("password");
+
+if(!email){
+alert("Kayıtlı hesap bulunamadı.");
+return;
+}
+
+alert(
+"Kayıtlı E-posta: " +
+email +
+"\nŞifre: " +
+pass
+);
+}
 <script>
 
 function toggleSidebar(){
@@ -444,6 +551,22 @@ document.body.classList.remove("modal-open");
 }
 
 </script>
+<div class="modal" id="registerModal" onclick="closeRegister(event)">
+<div class="modal-box" onclick="event.stopPropagation()">
 
+<h2 style="text-align:center;">Kayıt Ol</h2>
+
+<input id="registerName" type="text" placeholder="İsim">
+
+<input id="registerEmail" type="email" placeholder="E-Posta">
+
+<input id="registerPass" type="password" placeholder="Şifre">
+
+<button onclick="registerUser()">
+Kayıt Ol
+</button>
+
+</div>
+</div>
 </body>
 </html>
