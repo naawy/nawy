@@ -6,6 +6,7 @@
 <title>Nawy.ai</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -15,35 +16,76 @@ font-family:Arial,sans-serif;
 
 body{
 background:#000;
-color:#fff;
+color:white;
 display:flex;
 height:100vh;
 overflow:hidden;
 }
 
+/* SOL MENU */
+
 .sidebar{
 width:250px;
 background:#0a0a0a;
-border-right:1px solid #161616;
+border-right:1px solid #181818;
 padding:20px;
 }
 
 .logo{
 font-size:24px;
 font-weight:bold;
-margin-bottom:20px;
+margin-bottom:40px;
 }
 
-.auth{
-margin-bottom:30px;
+/* SAG UST BUTONLAR */
+
+.top-buttons{
+position:absolute;
+top:20px;
+right:25px;
+display:flex;
+gap:15px;
+z-index:1000;
 }
 
-.auth a{
-color:white;
+.neon-btn{
+position:relative;
+padding:12px 22px;
+border-radius:12px;
 text-decoration:none;
-margin-right:15px;
-font-size:14px;
+color:white;
+background:#0a0a0a;
+overflow:hidden;
 }
+
+.neon-btn::before{
+content:"";
+position:absolute;
+inset:-2px;
+border-radius:12px;
+background:linear-gradient(
+90deg,
+transparent,
+#7c3aed,
+#a855f7,
+#7c3aed,
+transparent
+);
+background-size:300% 300%;
+animation:rotateGlow 3s linear infinite;
+z-index:-1;
+}
+
+@keyframes rotateGlow{
+0%{
+background-position:0% 50%;
+}
+100%{
+background-position:300% 50%;
+}
+}
+
+/* MENU */
 
 .menu a{
 display:block;
@@ -60,13 +102,17 @@ transition:.25s;
 background:#7c3aed;
 }
 
+/* ANA ALAN */
+
 .main{
 flex:1;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#000;
+position:relative;
 }
+
+/* SAYFALAR */
 
 .page{
 display:none;
@@ -90,6 +136,8 @@ transform:translateY(0);
 }
 }
 
+/* BASLIKLAR */
+
 .title{
 font-size:42px;
 margin-bottom:20px;
@@ -98,6 +146,8 @@ text-shadow:
 0 0 3px #fff,
 0 0 8px #fff;
 }
+
+/* INPUT */
 
 .input-box{
 width:650px;
@@ -110,6 +160,12 @@ color:white;
 font-size:16px;
 outline:none;
 }
+
+.input-box:focus{
+box-shadow:0 0 15px #7c3aed;
+}
+
+/* BUTON */
 
 .btn{
 margin-top:15px;
@@ -127,18 +183,25 @@ transition:.25s;
 background:#9333ea;
 transform:scale(1.05);
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- SAG UST -->
+
+<div class="top-buttons">
+<a href="#" class="neon-btn">Oturum Aç</a>
+<a href="#" class="neon-btn">Kayıt Ol</a>
+</div>
+
+<!-- SOL MENU -->
+
 <div class="sidebar">
 
-<div class="logo">NAWY.AI</div>
-
-<div class="auth">
-<a href="#">Login</a>
-<a href="#">Sign In</a>
+<div class="logo">
+NAWY.AI
 </div>
 
 <div class="menu">
@@ -150,6 +213,8 @@ transform:scale(1.05);
 
 </div>
 
+<!-- ICERIK -->
+
 <div class="main">
 
 <div id="home" class="page active">
@@ -157,7 +222,10 @@ transform:scale(1.05);
 </div>
 
 <div id="youtube" class="page">
-<h1 class="title">YouTube URL</h1>
+
+<h1 class="title">
+YouTube URL
+</h1>
 
 <input
 class="input-box"
@@ -167,10 +235,14 @@ placeholder="YouTube linkini yapıştır...">
 <button class="btn">
 Özet Çıkar
 </button>
+
 </div>
 
 <div id="podcast" class="page">
-<h1 class="title">Upload Podcast</h1>
+
+<h1 class="title">
+Upload Podcast
+</h1>
 
 <input
 class="input-box"
@@ -179,6 +251,7 @@ type="file">
 <button class="btn">
 Dosya Yükle
 </button>
+
 </div>
 
 <div id="settings" class="page">
@@ -188,6 +261,7 @@ Dosya Yükle
 </div>
 
 <script>
+
 function showPage(pageId){
 
 document.querySelectorAll('.page').forEach(page=>{
@@ -197,6 +271,7 @@ page.classList.remove('active');
 document.getElementById(pageId).classList.add('active');
 
 }
+
 </script>
 
 </body>
