@@ -17,7 +17,11 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#000;
+background:
+radial-gradient(circle at top left,#451a75 0%,transparent 30%),
+radial-gradient(circle at bottom right,#0f172a 0%,transparent 35%),
+#050505;
+
 color:white;
 height:100vh;
 display:flex;
@@ -59,17 +63,28 @@ background:#111;
 
 /* SIDEBAR */
 .sidebar{
-width:260px;
-background:#090909;
-border-right:1px solid #151515;
+width:320px;
+
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.05),
+rgba(255,255,255,.02)
+);
+
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+
+border-right:
+1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 0 50px rgba(124,58,237,.15);
+
 padding:20px;
 position:relative;
-transition:0.35s ease;
+transition:.35s ease;
 overflow:hidden;
-}
-
-.sidebar.collapsed{
-width:110px;
 }
 
 /* HEADER */
@@ -82,9 +97,19 @@ position:relative;
 }
 
 .logo{
-font-size:20px;
-font-weight:bold;
-color:#e5e5e5;
+font-size:28px;
+font-weight:800;
+
+background:
+linear-gradient(
+90deg,
+#fff,
+#d8b4fe,
+#7c3aed
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .sidebar.collapsed .logo{
@@ -116,16 +141,26 @@ background:transparent;
 .menu a{
 display:flex;
 align-items:center;
-gap:12px;
-padding:14px;
-margin-bottom:10px;
-border-radius:14px;
-color:white;
-text-decoration:none;
+gap:14px;
+
+padding:16px;
+margin-bottom:12px;
+
+border-radius:22px;
+
+background:
+rgba(255,255,255,.03);
+
+border:
+1px solid rgba(255,255,255,.05);
+
 cursor:pointer;
-transition:0.25s;
+transition:.35s;
 position:relative;
 overflow:hidden;
+
+color:white;
+text-decoration:none;
 }
 
 .menu a i{
@@ -172,15 +207,44 @@ transition:0.3s;
 opacity:1;
 }
 
-.menu a:hover i{
-color:#a855f7;
-transform:scale(1.08);
-box-shadow:0 0 12px rgba(168,85,247,0.8);
-border-color:#7c3aed;
+.menu a i{
+
+width:52px;
+height:52px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+135deg,
+rgba(124,58,237,.25),
+rgba(255,255,255,.03)
+);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+font-size:20px;
+
+transition:.3s;
 }
 
-.menu a:hover span{
-color:#d8b4fe;
+.menu a:hover{
+
+transform:translateX(8px);
+
+background:
+rgba(124,58,237,.12);
+
+border-color:
+rgba(168,85,247,.35);
+
+box-shadow:
+0 0 25px rgba(124,58,237,.25);
 }
 
 /* SOCIALS */
