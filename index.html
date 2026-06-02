@@ -38,6 +38,7 @@ position:relative;
 font-size:24px;
 font-weight:bold;
 margin-bottom:40px;
+color:#e5e5e5;
 }
 
 /* MENU */
@@ -54,7 +55,7 @@ transition:.3s;
 }
 
 .menu a:hover{
-background:#7c3aed;
+background:#6d28d9;
 }
 
 /* SOSYAL MEDYA */
@@ -88,13 +89,13 @@ border-radius:8px;
 
 background:linear-gradient(
 90deg,
+#5b21b6,
 #7c3aed,
-#a855f7,
-#7c3aed
+#5b21b6
 );
 
 background-size:300% 300%;
-animation:borderMove 3s linear infinite;
+animation:borderMove 4s linear infinite;
 
 -webkit-mask:
 linear-gradient(#fff 0 0) content-box,
@@ -103,7 +104,8 @@ linear-gradient(#fff 0 0);
 -webkit-mask-composite:xor;
 mask-composite:exclude;
 
-filter:drop-shadow(0 0 5px #a855f7);
+filter:drop-shadow(0 0 2px #7c3aed);
+opacity:0.7;
 }
 
 /* SAG UST */
@@ -134,13 +136,13 @@ border-radius:12px;
 
 background:linear-gradient(
 90deg,
+#5b21b6,
 #7c3aed,
-#a855f7,
-#7c3aed
+#5b21b6
 );
 
 background-size:300% 300%;
-animation:borderMove 3s linear infinite;
+animation:borderMove 4s linear infinite;
 
 -webkit-mask:
 linear-gradient(#fff 0 0) content-box,
@@ -148,6 +150,8 @@ linear-gradient(#fff 0 0);
 
 -webkit-mask-composite:xor;
 mask-composite:exclude;
+
+opacity:0.6;
 }
 
 /* ANA ALAN */
@@ -183,12 +187,8 @@ transform:translateY(0);
 }
 
 @keyframes borderMove{
-0%{
-background-position:0% 50%;
-}
-100%{
-background-position:300% 50%;
-}
+0%{background-position:0% 50%;}
+100%{background-position:300% 50%;}
 }
 
 /* BASLIK */
@@ -196,9 +196,8 @@ background-position:300% 50%;
 .title{
 font-size:42px;
 margin-bottom:20px;
-text-shadow:
-0 0 2px #fff,
-0 0 4px #fff;
+text-shadow:none;
+color:#f5f5f5;
 }
 
 /* INPUT */
@@ -208,7 +207,7 @@ width:650px;
 max-width:90vw;
 padding:18px;
 border-radius:14px;
-border:1px solid #7c3aed;
+border:1px solid #5b21b6;
 background:#000;
 color:white;
 outline:none;
@@ -216,7 +215,7 @@ font-size:16px;
 }
 
 .input-box:focus{
-box-shadow:0 0 10px #7c3aed;
+box-shadow:0 0 6px #5b21b6;
 }
 
 /* BUTON */
@@ -226,7 +225,7 @@ margin-top:15px;
 padding:14px 30px;
 border:none;
 border-radius:12px;
-background:#7c3aed;
+background:#6d28d9;
 color:white;
 cursor:pointer;
 font-size:16px;
@@ -234,8 +233,35 @@ transition:.25s;
 }
 
 .btn:hover{
-background:#9333ea;
-transform:scale(1.05);
+background:#7c3aed;
+transform:scale(1.03);
+}
+
+/* CUSTOM FILE */
+
+.file-wrapper{
+margin-top:10px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+input[type="file"]{
+display:none;
+}
+
+.file-label{
+padding:14px 25px;
+border-radius:12px;
+border:1px solid #5b21b6;
+cursor:pointer;
+color:white;
+background:#000;
+transition:.3s;
+}
+
+.file-label:hover{
+background:#111;
 }
 
 </style>
@@ -278,26 +304,20 @@ NAWY.AI
 <div id="youtube" class="page">
 <h1 class="title">YouTube URL</h1>
 
-<input
-class="input-box"
-type="text"
-placeholder="YouTube linkini yapıştır...">
+<input class="input-box" type="text" placeholder="YouTube linkini yapıştır...">
 
-<button class="btn">
-Özet Çıkar
-</button>
+<button class="btn">Özet Çıkar</button>
 </div>
 
 <div id="podcast" class="page">
-<h1 class="title">Upload Podcast</h1>
+<h1 class="title">Podcast</h1>
 
-<input
-class="input-box"
-type="file">
+<div class="file-wrapper">
+<label class="file-label" for="fileUpload">Dosya Seç</label>
+<input id="fileUpload" type="file">
+</div>
 
-<button class="btn">
-Dosya Yükle
-</button>
+<button class="btn">Yükle</button>
 </div>
 
 <div id="settings" class="page">
@@ -309,13 +329,10 @@ Dosya Yükle
 <script>
 
 function showPage(pageId){
-
 document.querySelectorAll('.page').forEach(page=>{
 page.classList.remove('active');
 });
-
 document.getElementById(pageId).classList.add('active');
-
 }
 
 </script>
